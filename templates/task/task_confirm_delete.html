@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}タスクの削除{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-primary" type="submit">確定</button>
+  </form>
+  <button class="btn btn-primary" onclick="location.href='{% url 'list-task'%}'">一覧へ戻る</button>
+{% endblock %}

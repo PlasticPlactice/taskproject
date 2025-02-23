@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}タスク修正{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">確定</button>
+  </form>
+  <button class="btn btn-primary" onclick="location.href='{% url 'list-task'%}'">一覧へ戻る</button>
+{% endblock %}

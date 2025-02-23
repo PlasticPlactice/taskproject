@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}タスク一覧{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">タイトル</th>
+            <th scope="col">期限</th>
+            <th scope="col">優先度</th>
+            <th scope="col">ステータス</th>
+        </tr>
+    </thead>
+    {% for item in task %}
+    <tbody>
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.last_day|date:"Y/m/d" }}</td>
+            <td>{{ item.get_priority_display }}</td>
+            <td>{{ item.get_status_display }}</td>
+            <td><button class="btn btn-primary" onclick="location.href='{% url 'update-task' item.id %}'">編集</button>
+                <button class="btn btn-primary" onclick="location.href='{% url 'delete-task' item.id %}'">削除</button></td>
+        </tr>
+    </tbody>   
+    {% endfor %}
+</table>
+<button class="btn btn-primary" onclick="location.href='{% url 'create-task'%}'">新規作成</button>
+{% endblock %}
